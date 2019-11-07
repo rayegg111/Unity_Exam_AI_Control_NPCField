@@ -11,4 +11,9 @@ public class robotNPC : MonoBehaviour
     public bool mission_complete = false;
     public int count_player = 0;
     public int finish = 5;
+
+    void Start()
+    {
+        Debug.Log(star);
+    }
 }

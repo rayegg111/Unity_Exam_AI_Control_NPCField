@@ -3,9 +3,9 @@
 public class robotball : MonoBehaviour
 {
     [Header("移動速度")]
-    public float speed = 5f;
+    public float speed = 20f;
     [Header("跳躍高度")]
-    public float jump = 2f;
+    public float jump = 50f;
 
     public bool pass = false;
     public bool isGround = false;
@@ -23,7 +23,7 @@ public class robotball : MonoBehaviour
     private void FixedUpdate()
     {
         Walk();
-        //Jump();
+        Jump();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,10 +37,7 @@ public class robotball : MonoBehaviour
     /// </summary>
     void Walk()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal * speed, 0, moveVertical * speed);
+        rig.AddForce(new Vector3(-speed * (Input.GetAxis("Vertical")), 0,speed*(Input.GetAxis("Horizontal"))));
     }
     /// <summary>
     /// 跳躍
@@ -50,7 +47,7 @@ public class robotball : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
         {
             isGround = false;
-            rig.AddForce(new Vector3(0, 0, jump));
+            rig.AddForce(new Vector3(0, jump, 0));
         }
     }
 }
