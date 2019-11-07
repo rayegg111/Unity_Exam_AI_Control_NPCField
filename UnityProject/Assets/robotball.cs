@@ -8,7 +8,6 @@ public class robotball : MonoBehaviour
     public float jump = 50f;
 
     public bool pass = false;
-    public bool isGround = false;
 
     private Rigidbody rig;
     private Transform tra;
@@ -26,12 +25,6 @@ public class robotball : MonoBehaviour
         Jump();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isGround = true;
-        Debug.Log("碰到" + collision.gameObject);
-    }
-
     /// <summary>
     /// 走路
     /// </summary>
@@ -44,9 +37,8 @@ public class robotball : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            isGround = false;
             rig.AddForce(new Vector3(0, jump, 0));
         }
     }

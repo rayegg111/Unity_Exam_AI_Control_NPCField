@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  jump: 50
+  jump: 100
   pass: 0
   isGround: 0
 --- !u!4 &1961258368 stripped
